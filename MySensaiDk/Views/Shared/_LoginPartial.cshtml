@@ -1,0 +1,71 @@
+﻿@using Microsoft.AspNet.Identity
+
+<div class="floatRight noPadding col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <a href="javascript:document.getElementById('logoutForm').submit()">
+                <div class="floatRight verticalLine menuText textPadding">
+                    <h2 class="col-sm-0 col-xs-0 noPadding textRightAlign">Log off</h2>
+                </div>
+                <div class="floatRight noPadding col-lg-0 col-md-0 col-sm-3 col-xs-3">
+                    <i class="material-icons">lock</i>
+                </div>
+            </a>
+
+            <a href='@Url.Action("Index", "User" )'>
+                <div class="floatRight menuText">
+                    <h2 class="col-sm-0 col-xs-0 noPadding textRightAlign">Min Profil</h2>
+                </div>
+                <div class="noPadding floatRight col-lg-0 col-md-0 col-sm-3 col-xs-3">
+                    <i class="material-icons">person</i>
+                </div>
+            </a>
+
+            if (User.IsInRole("Administrators"))
+            {
+                <a href='@Url.Action("Index", "AdminHome" , new { area="Admin" })'>
+                    <div class="floatRight menuText">
+                        <h2 class="col-sm-0 col-xs-0 noPadding textRightAlign">Admin</h2>
+                    </div>
+                    <div class="noPadding floatRight col-lg-0 col-md-0 col-sm-3 col-xs-3">
+                        <i class="material-icons">build</i>
+                    </div>
+                </a>
+            }
+
+            <a href='@Url.Action("Index", "Course" )'>
+                <div class="floatRight menuText">
+                    <h2 class="col-sm-0 col-xs-0 noPadding textRightAlign">Find Kursus</h2>
+                </div>
+                <div class="noPadding floatRight col-lg-0 col-md-0 col-sm-3 col-xs-3">
+                    <i class="material-icons">assignment</i>
+                </div>
+            </a>
+        }
+    }
+
+    else
+    {
+        <div class="col-lg-3 col-md-3 col-sm-0 col-xs-0 hideText xsMdMenu"></div>
+        <a href='@Url.Action("Login", "Account" )'>
+            <div class="verticalLine floatRight menuText textPadding">
+                <h2 class="col-sm-0 col-xs-0 noPadding textRightAlign">Log ind</h2>
+            </div>
+            <div class="floatRight noPadding col-lg-0 col-md-0 col-sm-3 col-xs-3">
+                <i class="material-icons">vpn_key</i>
+            </div>
+        </a>
+        <a href='@Url.Action("Index", "Course" )'>
+            <div class="floatRight menuText">
+                <h2 class="col-sm-0 col-xs-0 noPadding textRightAlign">Find Kursus</h2>
+            </div>
+            <div class="floatRight noPadding col-lg-0 col-md-0 col-sm-3 col-xs-3">
+                <i class="material-icons">assignment</i>
+            </div>
+        </a>
+    }
+</div>

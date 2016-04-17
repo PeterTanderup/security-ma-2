@@ -1,0 +1,81 @@
+﻿@using MySensaiDk.Models
+@model MySensaiDk.Models.AdminRegisterViewModel
+
+@{
+    ViewBag.Title = "Opret bruger";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-0 col-xs-0"></div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <h2 class="fontColorBlack">Opret bruger</h2>
+            @Html.ValidationSummary(true)
+
+            @Html.ValidationMessageFor(model => model.Email)
+            <div class="row">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-12 col-xs-12 fontColorBlack textLeftAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.EditorFor(model => model.Email)
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.FirstName)
+            <div class="row">
+                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-12 col-xs-12 fontColorBlack textLeftAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.EditorFor(model => model.FirstName)
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.LastName)
+            <div class="row">
+                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-12 col-xs-12 fontColorBlack textLeftAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.EditorFor(model => model.LastName)
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.Gender)
+            <div class="row">
+                @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-12 col-xs-12 fontColorBlack textLeftAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 textLeftAlign">
+                    @Html.DropDownListFor(x => x.Gender, new SelectList(Enum.GetNames(typeof(Gender))))
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.Birthday)
+            <div class="row">
+                @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-12 col-xs-12 fontColorBlack textLeftAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "birthday" } })
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.PhoneNumber)
+            <div class="row">
+                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-12 col-xs-12 fontColorBlack textLeftAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.EditorFor(model => model.PhoneNumber)
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.Password)
+            <div class="row">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-12 col-xs-12 fontColorBlack textLeftAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.EditorFor(model => model.Password)
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            <div class="row">
+                @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-12 col-xs-12 fontColorBlack textLeftAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.EditorFor(model => model.ConfirmPassword)
+                </div>
+            </div>
+
+            <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <input type="submit" value="Opret bruger" />
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-0 col-xs-0"></div>
+    </div>
+}

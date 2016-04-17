@@ -1,0 +1,117 @@
+﻿@import "reset.css";
+
+$colums: 12;
+$CustomColor: #47b7b7;
+$CustomOrange: #FFA263;
+
+
+body {
+}
+
+.grid-container {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.xs-hidden, .sm-hidden, .md-hidden, .lg-hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.row:before,
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.customBtn{
+    background-color: $CustomColor;
+    margin-right: 0.1em;
+    cursor:pointer;
+    border: 0px;
+}
+
+.btwTwo{
+    background-color: $CustomOrange;
+    margin-right: 0.1em;
+    cursor:pointer;
+    border:0px;
+}
+
+[class*='col-'] {
+    float: left;
+    min-height: 1px;
+    padding: 12px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+@media (min-width: 1px) and (max-width: 767px) {
+    .col-xs-0 {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    @for $i from 1 through $colums {
+        .col-xs-#{$i} {
+            width: (100%/$colums)* $i;
+        }
+    }
+    .grid-container {    
+        min-height:100vh;
+}
+}
+
+@media (min-width:768px) and (max-width: 991px) {
+    .grid-container {
+        max-width: 750px;
+    }
+
+    .col-sm-0 {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    @for $i from 1 through $colums {
+        .col-sm-#{$i} {
+            width: (100%/$colums)* $i;
+        }
+    }
+}
+
+@media (min-width:992px) and (max-width: 1199px) {
+    .grid-container {
+        max-width: 970px;
+    }
+
+    .col-md-0 {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    @for $i from 1 through $colums {
+        .col-md-#{$i} {
+            width: (100%/$colums)* $i;
+        }
+    }
+}
+
+@media(min-width:1200px) {
+    .grid-container {
+        max-width: 100%;
+    }
+
+    .col-lg-0 {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    @for $i from 1 through $colums {
+        .col-lg-#{$i} {
+            width: (100%/$colums)* $i;
+        }
+    }
+}

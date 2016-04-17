@@ -1,0 +1,86 @@
+﻿@model MySensaiDk.Models.Course
+
+@{
+    ViewBag.Title = "Slet kursus";
+}
+
+<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack">Slet kursus</h2>
+
+<div class="row">
+
+    <dl class="dl-horizontal fontColorBlack">
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.FullAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.FullAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResponseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResponseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxSpots)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxSpots)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="customBtn" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

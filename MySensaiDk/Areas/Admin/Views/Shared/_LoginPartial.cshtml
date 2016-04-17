@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated && User.IsInRole("Administrators"))
+{
+    using (Html.BeginForm("Logout", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <a href="javascript:document.getElementById('logoutForm').submit()">
+            <div class="floatRight verticalLine menuText textPadding">
+                <h1 class="textRightAlign orangeColor">
+                    L<span class="secondColor">og off</span>
+                </h1>
+            </div>
+        </a>
+
+        <a href='@Url.Action("Index", "User", new { area = "" } )'>
+            <div class="floatRight menuText">
+                <h1 class="textRightAlign orangeColor">
+                    H<span class="secondColor">ello @User.Identity.GetUserName()!</span>
+                </h1>
+            </div>
+        </a>
+
+            <a href='@Url.Action("Index", "AdminCourse")'>
+                <div class="floatRight menuText">
+                    <h1 class="textRightAlign orangeColor">
+                        K<span class="secondColor">urser</span>
+                    </h1>
+                </div>
+            </a>
+
+        <a href='@Url.Action("Index", "AdminUser" )'>
+            <div class="floatRight menuText">
+                <h1 class="textRightAlign orangeColor">
+                    B<span class="secondColor">rugere</span>
+                </h1>
+            </div>
+        </a>
+    }
+}
+
+else
+{
+
+    <div class="col-lg-3 col-md-3 col-sm-0 col-xs-0 hideText xsMdMenu"><h1 class="orangeColor"><span class="secondColor"></span></h1></div>
+    <a href='@Url.Action("Index", "Course" )'>
+        <div class="col-sm-6 col-xs-6 floatLeft menuText">
+            <h1 class="textRightAlign orangeColor">F<span class="secondColor">ind</span> <span class="orangeColor">U</span><span class="secondColor">nderviser</span></h1>
+        </div>
+    </a>
+    <a href='@Url.Action("Login", "Account" )'>
+        <div class="col-sm-6 col-xs-6 verticalLine floatLeft menuText textPadding">
+            <h1 class="textLeftAlign orangeColor">
+                L<span class="secondColor">og ind</span>
+            </h1>
+        </div>
+    </a>
+}

@@ -1,0 +1,62 @@
+﻿@using MySensaiDk.Models
+
+@model AdminUserDetails
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="col-lg-3 col-md-3 col-sm-0 col-xs-0"></div>
+
+<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="row addBorder">
+        <div class="row">
+            @Html.LabelFor(model => model.CurrentUser.Email, htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-6 col-xs-12 fontColorBlack textRightAlign" })
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 fontColorBlack textLeftAlign">
+                @Html.DisplayFor(model => model.CurrentUser.Email)
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(model => model.CurrentUser.FirstName, "Fornavn", htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-6 col-xs-12 fontColorBlack textRightAlign" })
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 fontColorBlack textLeftAlign">
+                @Html.DisplayFor(model => model.CurrentUser.FirstName)
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(model => model.CurrentUser.LastName, "Efternavn", htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-6 col-xs-12 fontColorBlack textRightAlign" })
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 fontColorBlack textLeftAlign">
+                @Html.DisplayFor(model => model.CurrentUser.LastName)
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(model => model.CurrentUser.Gender, "Køn", htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-6 col-xs-12 fontColorBlack textRightAlign" })
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 fontColorBlack textLeftAlign">
+                @Html.DisplayFor(model => model.CurrentUser.Gender)
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(model => model.Age, "Alder", htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-6 col-xs-12 fontColorBlack textRightAlign" })
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 fontColorBlack textLeftAlign">
+                @Html.DisplayFor(model => model.Age)
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(model => model.CurrentUser.PhoneNumber, "Telefon", htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-6 col-xs-12 fontColorBlack textRightAlign" })
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 fontColorBlack textLeftAlign">
+                @Html.DisplayFor(model => model.CurrentUser.PhoneNumber)
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(model => model.CurrentUser.PasswordHash, "Kode", htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-6 col-xs-12 fontColorBlack textRightAlign" })
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 fontColorBlack textLeftAlign">
+                **********
+            </div>
+        </div>
+        <a href='@Url.Action("Index", "AdminUser" )'>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+                <input type="button" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 customBtn" value="Tilbage" />
+            </div>
+        </a>
+    </div>
+</div>

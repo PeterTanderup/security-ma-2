@@ -1,0 +1,78 @@
+﻿@model MySensaiDk.Models.Course
+
+@{
+    ViewBag.Title = "Kursus detaljer";
+}
+
+<div class="fontColorBlack">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+        <h1>Kursus</h1>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack">
+
+            <div class="col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addBorder fontColorBlack">
+                        <h1 class="textLeftAlign">@Html.DisplayFor(model => model.Titel)</h1>
+                        <p class="textLeftAlign">@Html.DisplayFor(model => model.Description)</p>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addBorder textLeftAlign">
+                        <dl class="dl-horizontal textLeftAlign fontColorBlack">
+                            <dt class="textLeftAlign">
+                                @Html.Label("Adresse"): @Html.DisplayFor(model => model.Address.FullAddress)
+                            </dt>
+                            <dd>
+                                @Html.Label("Telefon nummer"): @Html.DisplayFor(model => model.User.PhoneNumber)
+                            </dd>
+
+                            <dt>
+                                @Html.Label("Underviser"): @Html.DisplayFor(model => model.User.FirstName)
+                            </dt>
+
+
+                            <dd>
+                                @Html.Label("Start tidspunkt"): @Html.DisplayFor(model => model.StartTime)
+                            </dd>
+
+
+                            <dd>
+                                @Html.Label("Slut tidspunkt"): @Html.DisplayFor(model => model.EndTime)
+                            </dd>
+
+
+                            <dd>
+                                @Html.Label("Tilmeldingsfrist"): @Html.DisplayFor(model => model.ResponseDate)
+                            </dd>
+
+
+                            <dd>
+                                @Html.Label("Pladser"): @Html.DisplayFor(model => model.MaxSpots)
+                            </dd>
+                        </dl>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2 fontColorBlack mapBtn addBorder ">Map</div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="mapContainer">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addBorder" id="courseMap">Map?</div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+        </div>
+
+    </div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.CourseId }) |*@
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+    <div class="col-lg-4 col-md-4"></div>
+
+</div>

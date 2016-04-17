@@ -1,0 +1,248 @@
+﻿@using MySensaiDk.Models
+@using PagedList.Mvc;
+@model UserDetails
+
+<link href="~/Content/PagedList.css" property="stylesheet" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Min Profil";
+}
+
+<div class="row">
+    <h1 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 textCenterAlign headLine"><strong class="fontColorBlack">Min Profil</strong></h1>
+</div>
+<div class="row">
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+    <div class="row col-lg-5 col-md-5 col-sm-12 col-xs-12">
+        <div class="row addBorder">
+            <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack">Mine Oplysninger</h2>
+
+            <div class="row">
+                @Html.LabelFor(model => model.CurrentUser.Email, htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack textRightAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack textLeftAlign">
+                    @Html.DisplayFor(model => model.CurrentUser.Email)
+                </div>
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.CurrentUser.FirstName, "Fornavn", htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack textRightAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack textLeftAlign">
+                    @Html.DisplayFor(model => model.CurrentUser.FirstName)
+                </div>
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.CurrentUser.LastName, "Efternavn", htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack textRightAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack textLeftAlign">
+                    @Html.DisplayFor(model => model.CurrentUser.LastName)
+                </div>
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.CurrentUser.Gender, "Køn", htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack textRightAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack textLeftAlign">
+                    @Html.DisplayFor(model => model.CurrentUser.Gender)
+                </div>
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.Age, "Alder", htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack textRightAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack textLeftAlign">
+                    @Html.DisplayFor(model => model.Age)
+                </div>
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.CurrentUser.PhoneNumber, "Telefon", htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack textRightAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack textLeftAlign">
+                    @Html.DisplayFor(model => model.CurrentUser.PhoneNumber)
+                </div>
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.CurrentUser.PasswordHash, "Kode", htmlAttributes: new { @class = "col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack textRightAlign" })
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack textLeftAlign">
+                    **********
+                </div>
+            </div>
+            <a href='@Url.Action("EditUser", "User" )'>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+                    <input type="button" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 customBtn" value="Rediger profil" />
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row col-lg-5 col-md-5 col-sm-12 col-xs-12">
+        <div class="row addBorder marginBot">
+            <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack">Tilmeldte Kurser</h2>
+            <table class="fontColorBlack col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <thead>
+                    <tr>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">Navn</th>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">Sted</th>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">Dato</th>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.CurrentUserEnrollments.Count() == 0)
+                    {
+                    <tr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack fullBorder">
+                        <th class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ny feature der kommer snart</th>
+                    </tr>
+                    }
+                    else
+                    {
+                    foreach (var enrollment in Model.CurrentUserEnrollments)
+                    {
+                    <tr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack fullBorder">
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">@enrollment.Course.Titel</td>
+                        @if (enrollment.Course.AddressId != null)
+                        {
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">@enrollment.Course.Address.AddressName</td>
+                        }
+                        else
+                        {
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">ikke defineret</td>
+                        }
+                        @if (enrollment.Course.StartTime != null)
+                        {
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">@enrollment.Course.StartTime</td>
+                        }
+                        else
+                        {
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">ikke defineret</td>
+                        }
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">
+                            @Html.ActionLink("Afmeld", "DeleteEnrollment", new { id = enrollment.EnrollmentId })
+                        </td>
+                    </tr>
+                    }
+                    }
+                </tbody>
+            </table>
+            <br />
+            @if (Model.CurrentUserEnrollments.Count() != 0)
+            {
+            <div class="row fontColorBlack col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    @Html.PagedListPager(Model.CurrentUserEnrollments, page => Url.Action("Index", new { enrollmentPage = page, addressPage = Model.CurrentUserAddresses.PageNumber, coursePage = Model.CurrentUserCourses.PageNumber }))
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack">
+                    side @(Model.CurrentUserEnrollments.PageCount < Model.CurrentUserEnrollments.PageNumber ? 0 : Model.CurrentUserEnrollments.PageNumber) af @Model.CurrentUserEnrollments.PageCount
+                </div>
+            </div>
+            }
+        </div>
+        <div class="row addBorder marginBot">
+            <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack">Mine Kursus Addresser</h2>
+            <table class="fontColorBlack col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <thead>
+                    <tr>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">Titel</th>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">Addresse</th>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">By</th>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.CurrentUserAddresses.Count() == 0)
+                    {
+                    <tr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack fullBorder">
+                        <th class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Du har ingen kursus addresser</th>
+                    </tr>
+                    }
+                    else
+                    {
+                    foreach (var address in Model.CurrentUserAddresses)
+                    {
+                    <tr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack fullBorder">
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">@address.AddressName</td>
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">@address.FullAddress</td>
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">@address.City.CityName</td>
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">
+                            @Html.ActionLink("Slet", "DeleteEnrollment", new { id = address.AddressId })
+                        </td>
+                    </tr>
+                    }
+                    }
+                </tbody>
+            </table>
+            <br />
+            @if (Model.CurrentUserAddresses.Count() != 0)
+            {
+            <div class="row fontColorBlack col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    @Html.PagedListPager(Model.CurrentUserAddresses, page => Url.Action("Index", new { enrollmentPage = Model.CurrentUserEnrollments.PageNumber, addressPage = page, coursePage = Model.CurrentUserCourses.PageNumber }))
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack">
+                    side @(Model.CurrentUserAddresses.PageCount < Model.CurrentUserAddresses.PageNumber ? 0 : Model.CurrentUserAddresses.PageNumber) af @Model.CurrentUserAddresses.PageCount
+                </div>
+            </div>
+            }
+        </div>
+        <div class="row addBorder">
+            <div class="row">
+                <h2 class="fontColorBlack col-lg-9 col-md-9 col-sm-7 col-xs-7">Mine Kurser</h2>
+                <a href='@Url.Action("Create", "Course" )' class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
+                    <input type="button" class="btwTwo" value="Tilføj kursus" />
+                </a>
+            </div>
+            <table class="fontColorBlack col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <thead>
+                    <tr>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">Navn</th>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">Sted</th>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">Dato</th>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.CurrentUserCourses.Count() == 0)
+                    {
+                    <tr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack fullBorder">
+                        <th class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Du afholder ingen kurser</th>
+                    </tr>
+                    }
+                    else
+                    {
+                    foreach (var course in Model.CurrentUserCourses)
+                    {
+                    <tr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack fullBorder">
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">@Html.ActionLink(@course.Titel, "Details","Course", new { id = @course.CourseId },null)</td>
+                        @if (course.AddressId != null)
+                        {
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">@course.Address.AddressName</td>
+                        }
+                        else
+                        {
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">ikke defineret</td>
+                        }
+                        @if (course.StartTime != null)
+                        {
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">@course.StartTime</td>
+                        }
+                        else
+                        {
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">ikke defineret</td>
+                        }
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">
+                            @Html.ActionLink("Slet", "Delete","Course", new { id = course.CourseId },null) |
+                            @Html.ActionLink("Rediger", "Edit", "Course", new { id = course.CourseId }, null)
+                        </td>
+                    </tr>
+                    }
+                    }
+                </tbody>
+            </table>
+            <br />
+            @if (Model.CurrentUserCourses.Count() != 0)
+            {
+            <div class="row fontColorBlack col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    @Html.PagedListPager(Model.CurrentUserCourses, page => Url.Action("Index", new { enrollmentPage = Model.CurrentUserEnrollments.PageNumber, addressPage = Model.CurrentUserAddresses.PageNumber, coursePage = page }))
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack">
+                    side @(Model.CurrentUserCourses.PageCount < Model.CurrentUserCourses.PageNumber ? 0 : Model.CurrentUserCourses.PageNumber) af @Model.CurrentUserCourses.PageCount
+                </div>
+            </div>
+            }
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+    </div>
+</div>
+

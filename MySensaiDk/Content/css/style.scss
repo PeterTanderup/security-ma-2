@@ -1,0 +1,564 @@
+﻿@import "griddy.scss";
+@import "../../Scripts/jquery-ui-1.11.4.custom/jquery-ui.min.css";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400);
+
+@font-face {
+    font-family: SenseiFont;
+    src: url(../fonts/Logo_Font_FingerpaintRegular.ttf);
+}
+
+@font-face {
+    font-family: MavenPro-Regular;
+    src: url('../fonts/MavenPro-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: MavenPro-Bold;
+    src: url('../fonts/MavenPro-Bold.ttf') format('truetype');
+}
+
+$CustomColor: #47b7b7;
+$CustomOrange: #FFA263;
+
+body {
+    font-family: MavenPro-Regular, Arial, Helvetica, sans-serif;
+}
+
+aside {
+    @extend .col-lg-4;
+    @extend .col-md-4;
+    @extend .col-sm-4;
+    @extend .col-xs-4;
+    height: 55vh;
+}
+
+.row div, div p {
+    font-family: MavenPro-Regular, Arial, Helvetica, sans-serif;
+}
+
+.listBtn {
+    cursor: pointer;
+}
+
+.mapBtn {
+    cursor: pointer;
+}
+
+.geoCode {
+    float: left !important;
+}
+
+
+.facebook {
+    border-color: white !important;
+    color: white !important;
+    background-color: #305c99 !important;
+    background-image: url(http://icons.iconarchive.com/icons/danleech/simple/512/facebook-icon.png);
+}
+
+.twitter {
+    border-color: white !important;
+    background-color: #00cdff !important;
+    color: white !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fontColorBlack {
+    color: black;
+}
+
+.marginBot {
+    margin-bottom: 1em;
+}
+
+.required:after {
+    content: "*";
+    font-weight: bold;
+    color: red;
+}
+
+.fullBorder {
+    border: 1px solid lightgrey;
+}
+
+.input-validation-error {
+    border: 2px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    color: #f00;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.field-validation-error {
+    color: #f00;
+}
+
+.addBorder {
+    border: 1px solid $CustomColor;
+}
+
+.inputWidth {
+    width: 80%;
+}
+
+.headLine {
+    padding: 24px 12px 24px 0 !important;
+}
+
+.noPadding {
+    padding: 0 !important;
+}
+
+.noFloat {
+    float: none !important;
+}
+
+a {
+    color: black;
+    font-family: MavenPro-Bold !important;
+    text-decoration: none;
+}
+
+a:visited {
+    font-family: MavenPro-Bold !important;
+    text-decoration: none;
+}
+
+hr {
+    color: $CustomOrange;
+    border-color: $CustomOrange;
+}
+
+.headerColor {
+    background-color: $CustomColor;
+}
+
+.customBtn {
+    font-family: MavenPro-Regular, Arial, Helvetica, sans-serif;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.btwTwo {
+    font-family: MavenPro-Regular, Arial, Helvetica, sans-serif;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+#mobileText {
+    /*add something that makes it disapear above mobile / tablet*/
+}
+
+p {
+    font-family: MavenPro-Regular, Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.textLeftAlign {
+    text-align: left !important;
+}
+
+.textRightAlign {
+    text-align: right;
+}
+
+h1, h2 {
+    font-family: MavenPro-Regular, Arial, Helvetica, sans-serif !important;
+    text-align: center !important;
+}
+
+.frontColor {
+    color: $CustomColor;
+}
+
+.orangeColor {
+    color: $CustomOrange;
+}
+
+strong {
+    font-family: MavenPro-Bold !important;
+}
+
+#logoHeading, h1 strong, div {
+    font-size: 30px;
+    font-family: MavenPro-Regular, Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+}
+
+.vLeftBlue {
+    border-left: 1px solid $CustomColor;
+}
+
+.vRightBlue {
+    border-right: 1px solid $CustomColor;
+}
+
+h1 span, h2 span {
+    color: white;
+    font-family: MavenPro-Regular, Arial, Helvetica, sans-serif;
+}
+
+#logoHeading span {
+    font-family: SenseiFont, Arial, Helvetica, sans-serif;
+}
+
+.grid-container {
+    background-repeat: no-repeat;
+}
+
+.grid-container img {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+@media (min-width: 1px) and (max-width: 767px) {
+    #logoHeading, h1 strong, div {
+    }
+
+
+    .textLeftAlign {
+        text-align: center;
+    }
+
+    .textRightAlign {
+        text-align: center;
+    }
+
+    .videoView {
+        height: 93vh;
+        background-image: url(../img/Billed.jpg);
+        background-repeat: no-repeat;
+    }
+
+    .xsMdMenu {
+        height: 7vh;
+    }
+
+    .offsetOne {
+        margin-top: 50vh;
+    }
+
+    .floatLeft {
+        float: left !important;
+    }
+
+    .floatRight {
+        float: right !important;
+    }
+
+    #courseMap {
+        -webkit-animation-name: fadeIn;
+        -webkit-animation-duration: 1s;
+        -moz-animation-name: fadeIn;
+        -moz-animation-duration: 1s;
+        -o-animation-name: fadeIn;
+        -o-animation-duration: 1s;
+        animation-name: fadeIn;
+        animation-duration: 1s;
+        display: none;
+        height: 52vh !important;
+    }
+
+    #courseList {
+        -webkit-animation-name: fadeIn;
+        -webkit-animation-duration: 1s;
+        -moz-animation-name: fadeIn;
+        -moz-animation-duration: 1s;
+        -o-animation-name: fadeIn;
+        -o-animation-duration: 1s;
+        animation-name: fadeIn;
+        animation-duration: 1s;
+    }
+
+
+    #mapContainer {
+        display: none;
+    }
+}
+
+@media (min-width:768px) and (max-width: 991px) {
+    .textLeftAlign {
+        text-align: center;
+    }
+
+    .textRightAlign {
+        text-align: center;
+    }
+
+
+    .grid-container {
+        height: 100vh;
+    }
+
+    .videoView {
+        height: 93vh;
+        background-image: url(../img/Billed.jpg);
+        background-repeat: no-repeat;
+    }
+
+    .xsMdMenu {
+        height: 7vh;
+    }
+
+    .offsetOne {
+        margin-top: 50vh;
+    }
+
+    .floatLeft {
+        float: left !important;
+    }
+
+    .floatRight {
+        float: right !important;
+    }
+
+    #courseMap {
+        -webkit-animation-name: fadeIn;
+        -webkit-animation-duration: 1s;
+        -moz-animation-name: fadeIn;
+        -moz-animation-duration: 1s;
+        -o-animation-name: fadeIn;
+        -o-animation-duration: 1s;
+        animation-name: fadeIn;
+        animation-duration: 1s;
+        display: none;
+        height: 52vh !important;
+    }
+
+    #courseList {
+        -webkit-animation-name: fadeIn;
+        -webkit-animation-duration: 1s;
+        -moz-animation-name: fadeIn;
+        -moz-animation-duration: 1s;
+        -o-animation-name: fadeIn;
+        -o-animation-duration: 1s;
+        animation-name: fadeIn;
+        animation-duration: 1s;
+    }
+
+
+    #mapContainer {
+        display: none;
+    }
+}
+
+@media (min-width:992px) and (max-width: 1199px) {
+    .videoView {
+        height: 40vh;
+        background-image: url(../img/Billed.jpg);
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: left;
+        width: 100%;
+    }
+
+    .offsetOne {
+        margin-top: 30vh;
+    }
+
+    .hideText {
+        visibility: hidden;
+    }
+
+    .verticalLine {
+        border-left: 2px solid $CustomOrange;
+    }
+
+    .customBtn btnTwo {
+        font-size: 12px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        text-align: center;
+    }
+
+    .textLeftAlign {
+        text-align: left;
+    }
+
+    .textRightAlign {
+        text-align: right;
+    }
+
+
+    .videoView {
+        height: 100%;
+    }
+
+    .textCenterAlign {
+        text-align: center;
+    }
+
+    .floatLeft {
+        float: left !important;
+    }
+
+    .floatRight {
+        float: right !important;
+    }
+
+    .menuText {
+        padding: 0.7em 1em 0.6em 0;
+    }
+
+    .textPadding {
+        padding-left: 0.5em;
+    }
+
+    i .material-icons {
+        color: black;
+    }
+
+    #courseMap {
+        -webkit-animation-name: fadeIn;
+        -webkit-animation-duration: 1s;
+        -moz-animation-name: fadeIn;
+        -moz-animation-duration: 1s;
+        -o-animation-name: fadeIn;
+        -o-animation-duration: 1s;
+        animation-name: fadeIn;
+        animation-duration: 1s;
+        display: none;
+        height: 52vh !important;
+    }
+
+    #courseList {
+        -webkit-animation-name: fadeIn;
+        -webkit-animation-duration: 1s;
+        -moz-animation-name: fadeIn;
+        -moz-animation-duration: 1s;
+        -o-animation-name: fadeIn;
+        -o-animation-duration: 1s;
+        animation-name: fadeIn;
+        animation-duration: 1s;
+    }
+
+
+    #mapContainer {
+        display: none;
+    }
+}
+
+@media(min-width:1200px) {
+    .videoView {
+        height: 100%;
+        background-image: url(../img/Billed.jpg);
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: left;
+        width: 100%;
+    }
+
+    .offsetOne {
+        margin-top: 29vh;
+    }
+
+    .hideText {
+        visibility: hidden;
+    }
+
+    .verticalLine {
+        border-left: 2px solid $CustomOrange;
+    }
+
+    .customBtn {
+        font-size: 15px;
+    }
+
+    .btwTwo {
+        font-size: 15px;
+    }
+
+    .textLeftAlign {
+        text-align: left;
+    }
+
+    .textRightAlign {
+        text-align: right;
+    }
+
+    .textCenterAlign {
+        text-align: center;
+    }
+
+    .floatLeft {
+        float: left !important;
+    }
+
+    .floatRight {
+        float: right !important;
+    }
+
+    .menuText {
+        padding: 0.7em 1em 0.6em 0;
+    }
+
+    .textPadding {
+        padding-left: 0.5em !important;
+    }
+
+    th {
+        padding-left: 15px !important;
+    }
+
+    i .material-icons {
+        color: black;
+    }
+
+    .noPadding {
+        margin: 0px !important;
+    }
+
+    #singleCourseMap {
+        -webkit-animation-name: fadeIn;
+        -webkit-animation-duration: 1s;
+        -moz-animation-name: fadeIn;
+        -moz-animation-duration: 1s;
+        -o-animation-name: fadeIn;
+        -o-animation-duration: 1s;
+        animation-name: fadeIn;
+        animation-duration: 1s;
+        height: 52vh !important;
+    }
+
+
+    #courseMap {
+        -webkit-animation-name: fadeIn;
+        -webkit-animation-duration: 1s;
+        -moz-animation-name: fadeIn;
+        -moz-animation-duration: 1s;
+        -o-animation-name: fadeIn;
+        -o-animation-duration: 1s;
+        animation-name: fadeIn;
+        animation-duration: 1s;
+        display: none;
+        height: 52vh !important;
+    }
+
+    #courseList {
+        -webkit-animation-name: fadeIn;
+        -webkit-animation-duration: 1s;
+        -moz-animation-name: fadeIn;
+        -moz-animation-duration: 1s;
+        -o-animation-name: fadeIn;
+        -o-animation-duration: 1s;
+        animation-name: fadeIn;
+        animation-duration: 1s;
+    }
+
+
+    #mapContainer {
+        display: none;
+    }
+}

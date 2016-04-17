@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Mysensei";
+}
+
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 videoView">
+
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
+        <h1 class="hideText">Inspirerende slagord</h1>
+        <p class="hideText">Kort beskrivende tekst</p>
+        
+        @if (Request.IsAuthenticated)
+        {
+        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"></div>
+        <a href='@Url.Action("Index", "Course" )'  class="col-lg-2 col-md-2 col-sm-4 col-xs-4 offsetOne fontColorBlack customBtn">
+            Find kursus
+        </a>
+        <a href='@Url.Action("Create", "Course" )' class="col-lg-2 col-md-2 col-sm-4 col-xs-4 offsetOne fontColorBlack btwTwo">
+            Opret Kursus
+        </a>
+        }
+        else{
+        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"></div>
+        <a href='@Url.Action("Index", "Course" )' class="col-lg-2 col-md-2 col-sm-4 col-xs-4 offsetOne fontColorBlack customBtn">
+            Find kursus
+        </a>
+        <a href='@Url.Action("Register", "Account" )' class="col-lg-2 col-md-2 col-sm-4 col-xs-4 offsetOne fontColorBlack btwTwo">
+            Få konto
+        </a>
+        }
+        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2"></div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-0 col-xs-0"></div>
+</div>
+
+<div class="row ">
+    <div class="col-lg-12 col-md-12 col-sm-0 col-xs-0">
+        <div class="col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+        <div>
+            <div class="col-lg-3 col-md-3 col-sm-0 col-xs-0 addBorder headerColor">
+                <h2 class="">SÅDAN FUNGERER DET</h2>
+                <hr />
+                <p>MySensei er en gratis tjeneste, som formidler kontakt mellem personer, der ønsker at udvide deres kompetence horisont med personer, der er i stand til at lære netop disse kompetencer fra sig!</p>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+            <div class="col-lg-3 col-md-3 col-sm-0 col-xs-0 addBorder headerColor">
+                <h2 class="">SØG, FIND, OG LÆR</h2>
+                <hr />
+                <p>Søg på kompetencer du ønsker at forbedre eller lære. Find dernæst personer i dit nærområde, som har ekspertise inden for netop de kompetencer du søger. Kontakt underviseren og så er du i gang.</p>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-0 col-xs-0"></div>
+<div class="row">
+    <div>
+        <div class="col-lg-4 col-md-4 col-sm-0 col-xs-0"></div>
+        <input type="button" onclick="location.href = 'https://www.facebook.com/groups/536605899826010/';" class="col-lg-2 col-md-2 col-sm-0 col-xs-0 customBtn facebook " value="Follow on Facebook" />
+        <input type="button" onclick="location.href = 'https://twitter.com/';" class="col-lg-2 col-md-2 col-sm-0 col-xs-0 customBtn twitter" value="Follow on Twitter" />
+        <div class="col-lg-4 col-md-4 col-sm-0 col-xs-0"></div>
+
+    </div>
+
+</div>
+
+

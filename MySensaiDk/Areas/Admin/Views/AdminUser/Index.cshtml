@@ -1,0 +1,85 @@
+﻿@model PagedList.IPagedList<AppUser>
+
+@using Microsoft.AspNet.Identity
+@using MySensaiDk.Models
+@using PagedList.Mvc;
+
+
+<link href="~/Content/PagedList.css" property="stylesheet" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Administrer brugere";
+}
+@if (Request.IsAuthenticated && User.IsInRole("Administrators"))
+{
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+    <h2 class="fontColorBlack">Administrer brugere</h2>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 addBorder" id="courseList">
+            <table class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack">
+                <tr>
+
+                    <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2 textLeftAlign">
+                        Fornavn
+                    </th>
+                    <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2 textLeftAlign">
+                        Efternavn
+                    </th>
+                    <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">
+                        E-mail
+                    </th>
+                    <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2 textLeftAlign">
+                        Antal kurser
+                    </th>
+                    <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">
+                        Options
+                    </th>
+                </tr>
+            </table>
+            <table class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack">
+                @foreach (var item in Model)
+                {
+                    
+                    <tr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack fullBorder">
+                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2 textLeftAlign">
+                            @Html.ActionLink(@item.FirstName, "Details", new { id = item.Id })
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2 textLeftAlign">
+                            @item.LastName
+                        </td>
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">
+                            @item.Email
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2 textLeftAlign">
+                            @item.Courses.Count
+                        </td>
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 textLeftAlign">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </table>
+            @if (Model.Count != 0)
+            {
+                <div class="row fontColorBlack col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack">
+                        <p>side @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) af @Model.PageCount</p>
+                        <a href='@Url.Action("Create", "AdminUser" )'>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+                                <input type="button" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 customBtn " value="Tilføj bruger" />
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+

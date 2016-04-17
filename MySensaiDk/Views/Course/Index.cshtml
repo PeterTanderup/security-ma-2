@@ -1,0 +1,96 @@
+﻿@using MySensaiDk.Models
+@using PagedList.Mvc;
+
+@*@model IEnumerable<MySensaiDk.Models.Course>*@
+@model PagedList.IPagedList<Course>
+
+@{
+    ViewBag.Title = "Find kursus";
+}
+
+<link href="~/Content/PagedList.css" property="stylesheet" rel="stylesheet" type="text/css" />
+
+<div class="row">
+    <h1 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 textCenterAlign headLine"><strong class="fontColorBlack">Find Kursus</strong></h1>
+</div>
+
+<div class="row">
+    <div class="col-lg-3 col-md-1 col-sm-1 col-xs-1"></div>
+
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 addBorder">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <input type="button" name="List" value="List" class="customBtn col-xs-3 col-sm-2 col-md-2 col-lg-2 listBtn"/>
+            <input type="button" name="Map" value="Map" class="customBtn col-xs-3 col-sm-2 col-md-2 col-lg-2 mapBtn" />
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-1 "></div>
+
+            <a href='@Url.Action("Create", "Course" )' class="col-lg-2 col-md-2 col-sm-3 col-xs-3 floatRight btwTwo">
+                Tilføj kursus
+            </a>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="mapContainer">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+                <input class="geoCode" id="address" type="text" />
+                <input class="geoCode" id="submit" type="button" value="Find" />
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 addBorder" id="courseMap">MAP</div>
+            <div class="col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="courseList">
+            @*<table class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack">
+                    <tr>
+                        <th class="col-lg-4 col-md-2 col-sm-2 col-xs-2 textLeftAlign">
+                            Titel
+                        </th>
+                        <th class="col-lg-4 col-md-2 col-sm-2 col-xs-2 textLeftAlign">
+                            Beskrivelse
+                        </th>
+                        <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2 textLeftAlign">
+                            MaxSpots
+                        </th>
+                        <th class="col-lg-2 col-md-1 col-sm-1 col-xs-1">
+                            Detaljer
+                        </th>
+                    </tr>
+                </table>*@
+            <table class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack">
+                @foreach (var item in Model)
+            {
+
+                    <tr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fontColorBlack fullBorder">
+                        <td class="col-lg-4 col-md-4 col-sm-4 col-xs-4 textLeftAlign">
+                            <strong> @item.Titel</strong>
+                        </td>
+                        <td class="col-lg-4 col-md-4 col-sm-4 col-xs-4 textLeftAlign">
+                            @item.Description
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2 textLeftAlign">
+                            @item.MaxSpots
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            @*@Html.ActionLink("keyboard_arrow_right", "Details", new { id = item.CourseId }, new { @class = "material-icons"} )*@
+                            <a href="/Course/Details/@item.CourseId">
+                                <p class="fontColorBlack material-icons">keyboard_arrow_right</p>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+
+            @if (Model.Count != 0)
+            {
+                <div class="row fontColorBlack col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="">
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    </div>
+                    @*<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 fontColorBlack">
+                        <p>side @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) af @Model.PageCount</p>
+                        </div>*@
+                </div>
+            }
+        </div>
+    </div>
+</div>
